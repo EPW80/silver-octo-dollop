@@ -1,0 +1,12 @@
+# Review model aligned with hoh-minimalism-product-page.
+# Feature changes need one independent approving review from a developer with
+# write access. No catch-all rule: developers can review each other.
+# Governance changes require a member of the technical-admins team.
+# Grant this team explicit write or Admin access in every generated repository.
+# Team access and branch rulesets are not copied with template files.
+
+/.github/      @House-of-Helix-CMD/technical-admins
+/.helix/       @House-of-Helix-CMD/technical-admins
+/releases/     @House-of-Helix-CMD/technical-admins
+/CODEOWNERS    @House-of-Helix-CMD/technical-admins
+/docs/schemas/ @House-of-Helix-CMD/technical-admins

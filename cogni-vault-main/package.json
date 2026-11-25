@@ -1,0 +1,38 @@
+{
+  "name": "data-bank",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared knowledge store and House of Helix Peptides operations, exposed as a remote MCP server and REST API on Cloudflare Workers.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "sh -c 'test -f .dev.vars || cp .dev.vars.example .dev.vars' && wrangler d1 migrations apply data-bank --local && wrangler dev --port 44119",
+    "test": "vitest run",
+    "test:node": "vitest run --project node",
+    "test:workers": "vitest run --project workers",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test/workers",
+    "lint": "biome lint",
+    "format": "biome format --write",
+    "secrets": "sh scripts/secrets.sh",
+    "check": "npm run typecheck && npm run lint && npm test && npm run secrets",
+    "inspect": "npx -y @modelcontextprotocol/inspector@2.16.0",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply data-bank --local",
+    "db:migrate:remote": "wrangler d1 migrations apply data-bank --remote"
+  },
+  "dependencies": {
+    "@cfworker/json-schema": "^4.1.6",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.9",
+    "@cloudflare/vitest-plugin": "^1.9.2",
+    "@cloudflare/workers-types": "^5.20261123.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12",
+    "wrangler": "^4.167.0"
+  }
+}

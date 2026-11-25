@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "data-bank",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  // Replace database_id with the id from `wrangler d1 create data-bank` before the first remote deploy.
+  // Any valid UUID works for `wrangler dev` and local migrations.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "data-bank",
+      "database_id": "00000000-0000-4000-8000-000000000001",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "data-bank"
+    }
+  ]
+}
